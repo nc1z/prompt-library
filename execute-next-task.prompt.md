@@ -13,7 +13,8 @@ Use this workflow:
    - If there is a Phase 0, Step 0, Foundation, Setup, Baseline, or similar first section and it is not complete, execute that first.
    - Skip sections and tasks that are already checked off.
    - Treat the next unchecked checkbox task as the primary task.
-   - If a section has several unchecked subtasks that are tightly coupled, execute the smallest coherent batch needed to complete that section safely.
+   - Execute only that one next unchecked task. Do not continue into later tasks, later phases, or unrelated cleanup.
+   - If the selected task is too broad to finish as one reviewable change, stop and propose the smallest concrete slice for user approval.
 
 3. Read the product requirements before implementation.
    - Prefer `PRD.md`, product specs, requirements docs, issue descriptions, or acceptance criteria in the repo.
@@ -21,7 +22,7 @@ Use this workflow:
    - If requirements are missing, proceed only when the selected plan task is clear and low risk; otherwise stop and ask for the missing requirement.
 
 4. Spin up subagents before implementation.
-   - Start three developer subagents to work on the selected task. Give each developer agent a clear, non-overlapping responsibility whenever possible.
+   - Start one developer subagent to work on the selected task. Give the developer agent a clear implementation responsibility and expected deliverables.
    - Start one reviewer subagent to review the implementation for bugs, regressions, tests, maintainability, and missed edge cases.
    - Start one product/PM/BA subagent to continuously compare the work against the product requirements, acceptance criteria, user value, scope, and non-goals.
    - Tell every subagent the selected plan task, relevant requirement excerpts, expected deliverables, and any files or areas they own.
@@ -29,7 +30,6 @@ Use this workflow:
 
 5. Coordinate the implementation.
    - Do the critical-path work locally while subagents work in parallel.
-   - Avoid duplicated edits between developer subagents by assigning distinct files, modules, or responsibilities.
    - Integrate useful subagent output into one coherent implementation.
    - Keep the change scoped to the selected plan task unless a small supporting edit is necessary to make it work.
    - Preserve existing project conventions, architecture, naming, formatting, and package-manager choices.
@@ -51,6 +51,7 @@ Use this workflow:
    - Summarize the implementation in a few bullets.
    - List verification performed and any failures or skipped checks.
    - Mention plan updates made.
-   - Call out remaining blockers or the next unchecked task.
+   - Call out remaining blockers, if any.
+   - Stop and wait for user review before starting another task.
 
-Do not stop after planning. Execute the next task end to end unless blocked by missing requirements, unsafe ambiguity, failed permissions, or a required user decision.
+Execute exactly one selected task, then stop for user review. Do not continue through the rest of the plan without an explicit follow-up instruction.
