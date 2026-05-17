@@ -118,3 +118,13 @@ Quality rules:
 - Make the negative prompt targeted, not generic.
 - If the user requests a green-screen asset, clarify whether they mean a plain green background or a transparent/no-background asset. Use their answer in the final prompt.
 - For game assets or backgrounds, include camera, readability, scale, and interaction-context details.
+
+Transparent PNG / chroma-key guidance:
+
+- When the user requests a real transparent PNG and the image model may not reliably produce alpha transparency, generate an intermediate flat chroma-key source image first.
+- Use a perfectly uniform `#00ff00` background for chroma-key extraction.
+- Explicitly forbid shadows, gradients, texture, floor planes, glow, checkerboards, and lighting variation in the background.
+- Explicitly forbid `#00ff00` anywhere in the subject.
+- Require crisp subject edges, generous padding, and no contact shadows.
+- After generation, remove the `#00ff00` background with Pillow or an equivalent chroma-key removal tool and export a PNG with a real transparent alpha channel.
+- Require every pixel outside the subject to have `alpha = 0`.
