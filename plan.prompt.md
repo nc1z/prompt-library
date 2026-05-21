@@ -4,10 +4,12 @@
   - A clear feature/theme heading.
   - A one-sentence goal.
   - Concrete `- [ ]` tasks.
+  - Any architecture decision records (ADRs) that should be created or updated, preferably under `docs/decisions/`.
   - A suggested commit message.
 
   Make sure the plan covers:
   - Repository baseline and docs.
+  - ADRs for important architecture, data, integration, tooling, safety, and deployment decisions.
   - Demo fixture data.
   - Core pipeline or app logic.
   - Codex App-style human review outputs.
